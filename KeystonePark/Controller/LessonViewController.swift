@@ -29,6 +29,7 @@ class LessonViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadStudents()
     }
     
     //MARK: - Selectors
@@ -63,7 +64,7 @@ class LessonViewController: UITableViewController {
                 })
             }
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self?.loadStudents()
             }
         }
         
@@ -73,6 +74,13 @@ class LessonViewController: UITableViewController {
         alertController.addAction(action)
         alertController.addAction(cancelAlert)
         return alertController
+    }
+    
+    private func loadStudents() {
+        if let students = lessonService?.getAllStudents() {
+            studentsList = students
+            tableView.reloadData()
+        }
     }
     
     //MARK: - TableViewDataSource
@@ -89,6 +97,7 @@ class LessonViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         content.text = studentsList[indexPath.row].name
+        content.secondaryText = studentsList[indexPath.row].lesson?.type
         cell.contentConfiguration = content
         return cell
     }

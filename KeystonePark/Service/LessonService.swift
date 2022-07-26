@@ -24,6 +24,26 @@ class LessonService {
     
     //MARK: - Public
     
+    //Read
+    
+    func getAllStudents() -> [Student]? {
+        //key - studen has property lesson and lesson has property tybe => key: "lesson.type" - sort by type
+        let sortByLesson = NSSortDescriptor(key: "lesson.type", ascending: true)
+        let sortNyName = NSSortDescriptor(key:  "name", ascending: true)
+        let sortDescriptors = [sortByLesson, sortNyName]
+        let request: NSFetchRequest<Student> = Student.fetchRequest()
+        request.sortDescriptors = sortDescriptors
+        do {
+            students = try moc.fetch(request)
+            return students
+        } catch let error as NSError {
+            print("DEBUG: Failed fetching students with error: \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    //Create
+    
     func addStudent(name: String,
                     for type: LessonType,
                     completion: StudentHandler) {
