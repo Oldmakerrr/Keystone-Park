@@ -8,6 +8,10 @@
 import UIKit
 import CoreData
 
+enum ActionType: String {
+    case add, update
+}
+
 class LessonViewController: UITableViewController {
     
     //MARK: - Public Properties
@@ -25,6 +29,8 @@ class LessonViewController: UITableViewController {
     
     private var studentsList = [Student]()
     
+    private var studentToUpdate: Student?
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -35,25 +41,30 @@ class LessonViewController: UITableViewController {
     //MARK: - Selectors
     
     @IBAction func addStudentAction(_ sender: UIBarButtonItem) {
-        present(alertController(actionType: "add"), animated: true)
+        present(alertController(actionType: .add), animated: true)
     }
     
     //MARK: - Helper funtions
     
-    private func alertController(actionType: String) -> UIAlertController {
+    private func alertController(actionType: ActionType) -> UIAlertController {
         let alertController = UIAlertController(title: "Keystone Park Lesson", message: "Student Info", preferredStyle: .alert)
-        alertController.addTextField { textField in
+        alertController.addTextField { [weak self] textField in
             textField.placeholder = "Name"
+            textField.text = self?.studentToUpdate?.name ?? ""
         }
-        alertController.addTextField { textField in
+        alertController.addTextField { [weak self] textField in
             textField.placeholder = "Lesson Type: Ski | Snowboard"
+            textField.text = self?.studentToUpdate?.lesson?.type ?? ""
         }
         
-        let action = UIAlertAction(title: actionType.uppercased(), style: .default) { [weak self] _ in
+        let action = UIAlertAction(title: actionType.rawValue.capitalized, style: .default) { [weak self] _ in
+            
             guard let studentName = alertController.textFields?[0].text,
+                  !studentName.isEmpty,
                   let lesson = alertController.textFields?[1].text else { return }
             
-            if actionType.caseInsensitiveCompare("add") == .orderedSame {
+            switch actionType {
+            case .add:
                 guard let lessonType = LessonType(rawValue: lesson.lowercased()) else { return }
                 self?.lessonService?.addStudent(name: studentName,
                                                 for: lessonType,
@@ -62,6 +73,12 @@ class LessonViewController: UITableViewController {
                         self?.studentsList = students
                     }
                 })
+            case .update:
+                guard let studentToUpdate = self?.studentToUpdate else { return }
+                self?.lessonService?.update(currentStudent: studentToUpdate,
+                                            withName: studentName,
+                                            forLesson: lesson)
+                self?.studentToUpdate = nil
             }
             DispatchQueue.main.async {
                 self?.loadStudents()
@@ -100,5 +117,12 @@ class LessonViewController: UITableViewController {
         content.secondaryText = studentsList[indexPath.row].lesson?.type
         cell.contentConfiguration = content
         return cell
+    }
+    
+    //MARK: - TableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        studentToUpdate = studentsList[indexPath.row]
+        present(alertController(actionType: .update), animated: true)
     }
 }
