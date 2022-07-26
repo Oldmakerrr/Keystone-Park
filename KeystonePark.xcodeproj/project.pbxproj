@@ -19,6 +19,7 @@
 		1855AB52289042BA005E2967 /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB4E289042BA005E2967 /* Lesson+CoreDataProperties.swift */; };
 		1855AB5428904663005E2967 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB5328904663005E2967 /* LessonViewController.swift */; };
 		1855AB5728904FEC005E2967 /* LessonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB5628904FEC005E2967 /* LessonService.swift */; };
+		1855AB5A28906620005E2967 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB592890661F005E2967 /* Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1855AB4E289042BA005E2967 /* Lesson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1855AB5328904663005E2967 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		1855AB5628904FEC005E2967 /* LessonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonService.swift; sourceTree = "<group>"; };
+		1855AB592890661F005E2967 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				1855AB5628904FEC005E2967 /* LessonService.swift */,
+				1855AB592890661F005E2967 /* Extentions.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			files = (
 				1855AB50289042BA005E2967 /* Student+CoreDataProperties.swift in Sources */,
 				1855AB52289042BA005E2967 /* Lesson+CoreDataProperties.swift in Sources */,
+				1855AB5A28906620005E2967 /* Extentions.swift in Sources */,
 				1855AB51289042BA005E2967 /* Lesson+CoreDataClass.swift in Sources */,
 				1855AB5728904FEC005E2967 /* LessonService.swift in Sources */,
 				1855AB3628903E69005E2967 /* KeystonePark.xcdatamodeld in Sources */,

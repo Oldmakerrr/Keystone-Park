@@ -40,7 +40,7 @@ class LessonService {
     }
     
     //MARK: - Private
-    
+ 
     private func lessonExists(_ type: LessonType) -> Lesson? {
         let request: NSFetchRequest<Lesson> = Lesson.fetchRequest()
         request.predicate = NSPredicate(format: "type =%@", type.rawValue)
