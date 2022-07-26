@@ -14,6 +14,10 @@
 		1855AB3628903E69005E2967 /* KeystonePark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB3428903E69005E2967 /* KeystonePark.xcdatamodeld */; };
 		1855AB3828903E6B005E2967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1855AB3728903E6B005E2967 /* Assets.xcassets */; };
 		1855AB3B28903E6B005E2967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1855AB3928903E6B005E2967 /* LaunchScreen.storyboard */; };
+		1855AB4F289042BA005E2967 /* Student+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB4B289042BA005E2967 /* Student+CoreDataClass.swift */; };
+		1855AB50289042BA005E2967 /* Student+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB4C289042BA005E2967 /* Student+CoreDataProperties.swift */; };
+		1855AB51289042BA005E2967 /* Lesson+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB4D289042BA005E2967 /* Lesson+CoreDataClass.swift */; };
+		1855AB52289042BA005E2967 /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB4E289042BA005E2967 /* Lesson+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		1855AB3728903E6B005E2967 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1855AB3A28903E6B005E2967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1855AB3C28903E6B005E2967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1855AB4B289042BA005E2967 /* Student+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1855AB4C289042BA005E2967 /* Student+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Student+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1855AB4D289042BA005E2967 /* Lesson+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1855AB4E289042BA005E2967 /* Lesson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 		1855AB2A28903E69005E2967 /* KeystonePark */ = {
 			isa = PBXGroup;
 			children = (
+				1855AB4A289041DA005E2967 /* datamodel */,
 				1855AB2B28903E69005E2967 /* AppDelegate.swift */,
 				1855AB2D28903E69005E2967 /* SceneDelegate.swift */,
 				1855AB2F28903E69005E2967 /* ViewController.swift */,
@@ -65,9 +74,20 @@
 				1855AB3728903E6B005E2967 /* Assets.xcassets */,
 				1855AB3928903E6B005E2967 /* LaunchScreen.storyboard */,
 				1855AB3C28903E6B005E2967 /* Info.plist */,
-				1855AB3428903E69005E2967 /* KeystonePark.xcdatamodeld */,
 			);
 			path = KeystonePark;
+			sourceTree = "<group>";
+		};
+		1855AB4A289041DA005E2967 /* datamodel */ = {
+			isa = PBXGroup;
+			children = (
+				1855AB4B289042BA005E2967 /* Student+CoreDataClass.swift */,
+				1855AB4C289042BA005E2967 /* Student+CoreDataProperties.swift */,
+				1855AB4D289042BA005E2967 /* Lesson+CoreDataClass.swift */,
+				1855AB4E289042BA005E2967 /* Lesson+CoreDataProperties.swift */,
+				1855AB3428903E69005E2967 /* KeystonePark.xcdatamodeld */,
+			);
+			path = datamodel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1855AB50289042BA005E2967 /* Student+CoreDataProperties.swift in Sources */,
+				1855AB52289042BA005E2967 /* Lesson+CoreDataProperties.swift in Sources */,
 				1855AB3028903E69005E2967 /* ViewController.swift in Sources */,
+				1855AB51289042BA005E2967 /* Lesson+CoreDataClass.swift in Sources */,
 				1855AB3628903E69005E2967 /* KeystonePark.xcdatamodeld in Sources */,
 				1855AB2C28903E69005E2967 /* AppDelegate.swift in Sources */,
 				1855AB2E28903E69005E2967 /* SceneDelegate.swift in Sources */,
+				1855AB4F289042BA005E2967 /* Student+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
