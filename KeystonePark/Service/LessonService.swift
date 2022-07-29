@@ -22,7 +22,7 @@ class LessonService {
         self.moc = moc
     }
     
-    //MARK: - Public
+//MARK: - Public
     
     //Read
     
@@ -66,7 +66,7 @@ class LessonService {
         if student.lesson?.type?.caseInsensitiveCompare(lesson) == .orderedSame {
             let lesson = student.lesson
             let studentsList = Array(lesson?.students?.mutableCopy() as! NSMutableSet) as! [Student]
-            if let index = studentsList.index(where: { $0 == student}) {
+            if let index = studentsList.firstIndex(where: { $0 == student}) {
                 studentsList[index].name = name
                 lesson?.students = NSSet(array: studentsList)
             }
@@ -82,7 +82,17 @@ class LessonService {
         save()
     }
     
-    //MARK: - Private
+    // Delete
+    
+    func delete(student: Student) {
+        let lesson = student.lesson
+        students = students.filter({ $0 != student })
+        lesson?.removeFromStudents(student)
+        moc.delete(student)
+        save()
+    }
+    
+//MARK: - Private
  
     private func lessonExists(_ type: LessonType) -> Lesson? {
         let request: NSFetchRequest<Lesson> = Lesson.fetchRequest()

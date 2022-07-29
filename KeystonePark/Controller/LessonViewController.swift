@@ -14,7 +14,7 @@ enum ActionType: String {
 
 class LessonViewController: UITableViewController {
     
-    //MARK: - Public Properties
+//MARK: - Public Properties
     
     var managedObjectContext: NSManagedObjectContext? {
         didSet {
@@ -23,7 +23,7 @@ class LessonViewController: UITableViewController {
         }
     }
     
-    //MARK: - Private Properties
+//MARK: - Private Properties
     
     private var lessonService: LessonService?
     
@@ -31,23 +31,26 @@ class LessonViewController: UITableViewController {
     
     private var studentToUpdate: Student?
     
-    //MARK: - Lifecycle
+//MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadStudents()
     }
     
-    //MARK: - Selectors
+//MARK: - Selectors
     
     @IBAction func addStudentAction(_ sender: UIBarButtonItem) {
         present(alertController(actionType: .add), animated: true)
     }
     
-    //MARK: - Helper funtions
+//MARK: - Helper funtions
     
     private func alertController(actionType: ActionType) -> UIAlertController {
-        let alertController = UIAlertController(title: "Keystone Park Lesson", message: "Student Info", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Keystone Park Lesson",
+                                                message: "Student Info",
+                                                preferredStyle: .alert)
+        
         alertController.addTextField { [weak self] textField in
             textField.placeholder = "Name"
             textField.text = self?.studentToUpdate?.name ?? ""
@@ -85,9 +88,9 @@ class LessonViewController: UITableViewController {
             }
         }
         
-        
-        
-        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
+            self?.studentToUpdate = nil
+        }
         alertController.addAction(action)
         alertController.addAction(cancelAlert)
         return alertController
@@ -100,7 +103,7 @@ class LessonViewController: UITableViewController {
         }
     }
     
-    //MARK: - TableViewDataSource
+//MARK: - TableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -119,10 +122,20 @@ class LessonViewController: UITableViewController {
         return cell
     }
     
-    //MARK: - TableViewDelegate
+//MARK: - TableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         studentToUpdate = studentsList[indexPath.row]
         present(alertController(actionType: .update), animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let student = studentsList[indexPath.row]
+            lessonService?.delete(student: student)
+            studentsList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        tableView.reloadData()
     }
 }
