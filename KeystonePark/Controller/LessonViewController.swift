@@ -38,6 +38,10 @@ class LessonViewController: UITableViewController {
         loadStudents()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
 //MARK: - Selectors
     
     @IBAction func addStudentAction(_ sender: UIBarButtonItem) {
@@ -101,6 +105,13 @@ class LessonViewController: UITableViewController {
             studentsList = students
             tableView.reloadData()
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let lessonDetailViewController = segue.destination as? LessonDetailViewController else {
+            return
+        }
+        lessonDetailViewController.managedObjectContext = managedObjectContext
     }
     
 //MARK: - TableViewDataSource

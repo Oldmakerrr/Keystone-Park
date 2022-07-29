@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181059D22894669D001C366B /* LessonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181059D12894669D001C366B /* LessonDetailViewController.swift */; };
 		1855AB2C28903E69005E2967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB2B28903E69005E2967 /* AppDelegate.swift */; };
 		1855AB2E28903E69005E2967 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855AB2D28903E69005E2967 /* SceneDelegate.swift */; };
 		1855AB3328903E69005E2967 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1855AB3128903E69005E2967 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181059D12894669D001C366B /* LessonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailViewController.swift; sourceTree = "<group>"; };
 		1855AB2828903E69005E2967 /* KeystonePark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeystonePark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1855AB2B28903E69005E2967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1855AB2D28903E69005E2967 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				1855AB5328904663005E2967 /* LessonViewController.swift */,
+				181059D12894669D001C366B /* LessonDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				1855AB52289042BA005E2967 /* Lesson+CoreDataProperties.swift in Sources */,
 				1855AB51289042BA005E2967 /* Lesson+CoreDataClass.swift in Sources */,
 				1855AB5728904FEC005E2967 /* LessonService.swift in Sources */,
+				181059D22894669D001C366B /* LessonDetailViewController.swift in Sources */,
 				1855AB3628903E69005E2967 /* KeystonePark.xcdatamodeld in Sources */,
 				1855AB2C28903E69005E2967 /* AppDelegate.swift in Sources */,
 				1855AB2E28903E69005E2967 /* SceneDelegate.swift in Sources */,

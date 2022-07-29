@@ -17,6 +17,7 @@ typealias StudentHandler = (Bool, [Student]) -> Void
 class LessonService {
     private let moc: NSManagedObjectContext
     private var students = [Student]()
+    private var lessons = [Lesson]()
     
     init(moc: NSManagedObjectContext) {
         self.moc = moc
@@ -38,6 +39,20 @@ class LessonService {
             return students
         } catch let error as NSError {
             print("DEBUG: Failed fetching students with error: \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    func getAvailableLessons() -> [Lesson]? {
+        let sortByType = NSSortDescriptor(key: "type", ascending: true)
+        let request: NSFetchRequest<Lesson> = Lesson.fetchRequest()
+        request.sortDescriptors = [sortByType]
+        do {
+            lessons = try moc.fetch(request)
+            return lessons
+        } catch let error as NSError {
+            print("DEBUG: Failed fetching lessons with error: \(error.localizedDescription)")
+            
         }
         return nil
     }
@@ -89,6 +104,14 @@ class LessonService {
         students = students.filter({ $0 != student })
         lesson?.removeFromStudents(student)
         moc.delete(student)
+        save()
+    }
+    
+    //If a lesson is deleted and relationship between entities set up, like nullify, students with particular lessons will not be removed
+    
+    func delete(lesson: Lesson) {
+        lessons = lessons.filter{ $0 != lesson}
+        moc.delete(lesson)
         save()
     }
     

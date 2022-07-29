@@ -47,6 +47,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Keystone Park" id="Y6Q-hf-VO3">
+                        <barButtonItem key="leftBarButtonItem" title="Lesson" id="0Pw-da-WlW">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="RxF-z8-eI4" kind="show" identifier="goToDetailLesson" id="XtD-ub-Dsr"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="OLi-cc-Xow">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -58,6 +64,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQT-zA-Bj0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1833.3333333333335" y="69.642857142857139"/>
+        </scene>
+        <!--Lesson Detail View Controller-->
+        <scene sceneID="Cmz-U4-1Cr">
+            <objects>
+                <tableViewController id="RxF-z8-eI4" customClass="LessonDetailViewController" customModule="KeystonePark" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="PL2-hf-wEM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="1" green="0.31318456140000001" blue="0.1576366048" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LessonDetailCell" id="SkO-Eg-aZc">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SkO-Eg-aZc" id="WoY-fq-1Xh">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RxF-z8-eI4" id="7Mc-IC-9qC"/>
+                            <outlet property="delegate" destination="RxF-z8-eI4" id="4sZ-7i-n58"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="yvn-3M-22D"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6lA-7O-dvH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2713" y="70"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oJT-gu-ZM4">
