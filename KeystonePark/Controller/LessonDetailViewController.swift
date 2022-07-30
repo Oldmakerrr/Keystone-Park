@@ -57,9 +57,17 @@ class LessonDetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let lesson = lessons[indexPath.row]
-            lessonService?.delete(lesson: lesson)
-            lessons.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            lessonService?.delete(lesson: lesson, deleteHandler: { [weak self] success in
+                if success {
+                    self?.lessons.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                } else {
+                    let alert = UIAlertController(title: "Delete Failed", message: "There are students currently registred for this lesson", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .default)
+                    alert.addAction(action)
+                    self?.present(alert, animated: true)
+                }
+            })
         }
         tableView.reloadData()
     }}

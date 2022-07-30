@@ -2,14 +2,14 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Lesson" representedClassName="Lesson" syncable="YES">
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="students" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="lesson" inverseEntity="Student"/>
+        <relationship name="students" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Student" inverseName="lesson" inverseEntity="Student"/>
     </entity>
     <entity name="Student" representedClassName="Student" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="lesson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lesson" inverseName="students" inverseEntity="Lesson"/>
     </entity>
     <elements>
-        <element name="Lesson" positionX="-282.443359375" positionY="12.11581420898438" width="128" height="73"/>
+        <element name="Lesson" positionX="-282.443359375" positionY="12.11581420898438" width="128" height="59"/>
         <element name="Student" positionX="-54" positionY="0" width="128" height="73"/>
     </elements>
 </model>

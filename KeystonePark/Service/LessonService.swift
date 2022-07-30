@@ -107,12 +107,17 @@ class LessonService {
         save()
     }
     
-    //If a lesson is deleted and relationship between entities set up, like nullify, students with particular lessons will not be removed
+    //If you delete a lesson that has a Delete Rule set, Nullify students with particular lessons will not be removed
     
-    func delete(lesson: Lesson) {
+    //If you delete a lesson that has a Delete Rule set, Cascade will also remove all students from this lesson
+    
+    //If you try to delete a lesson that has a Delete Rule set, Deny and that particular lesson has students, you cannot delete this lesson, but you need to call method .rollback from object NSManagedObjectContext after failing to save
+    
+    
+    func delete(lesson: Lesson, deleteHandler: ((Bool) -> Void)?) {
         lessons = lessons.filter{ $0 != lesson}
         moc.delete(lesson)
-        save()
+        save(completion: deleteHandler)
     }
     
 //MARK: - Private
@@ -140,11 +145,19 @@ class LessonService {
         student.lesson = lesson
     }
     
-    private func save() {
+    private func save(completion: ((Bool) -> Void)? = nil) {
+        let success: Bool
         do {
             try moc.save()
+            success = true
         } catch let error as NSError {
             print("DEBUG: Save failed with error: \(error.localizedDescription)")
+            moc.rollback()
+            success = false
+        }
+        
+        if let completion = completion {
+            completion(success)
         }
     }
 }
